@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanValue - Smart Home Price Prediction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+        
+        .description {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    margin-bottom: 3rem;
+}
+
+.description p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.description strong {
+    color: #f1c40f; /* Highlight key phrases */
+}
+
+.description ol {
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.description li {
+    margin-bottom: 0.5rem;
+}
+        
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+.city-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    height: 300px;
+}
+
+.city-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.city-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.city-name {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* New Styles for "Coming Soon" */
+.city-card.coming-soon {
+    cursor: not-allowed; /* Show disabled cursor */
+}
+
+.city-card.coming-soon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    border-radius: 10px;
+}
+
+.coming-soon-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 2; /* Ensure text is above overlay */
+    animation: pulse 2s infinite; /* Add a subtle animation */
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.05); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>UrbanValue</h1>
+            <p class="tagline">AI-Powered Property Valuation for India's Major Cities</p>
+        </header>
+        
+        <div class="description">
+    <p>
+        Welcome to <strong>UrbanValue</strong>, your smart home price prediction tool! 
+        Our website helps you estimate the fair market price of properties in 
+        <strong>Bangalore</strong>, <strong>Delhi</strong>, <strong>Mumbai</strong>, and <strong>Kolkata</strong>.
+    </p>
+    <p>
+        Using advanced <strong>AI technology</strong>, we analyze factors like location, 
+        property size, and amenities to provide accurate price predictions. 
+        Our model has an <strong>86% accuracy rate</strong>, making it one of the most reliable tools 
+        for home buyers and sellers.
+    </p>
+    <p>
+        <strong>How it works:</strong>
+        <ol>
+            <li>Select your city from the options below.</li>
+            <li>Enter details about the property (size, location, etc.).</li>
+            <li>Get an instant price estimate based on real market data.</li>
+        </ol>
+    </p>
+    <p>
+        Whether you're buying, selling, or just curious, UrbanValue makes property 
+        valuation simple and transparent. Start by choosing your city below!
+    </p>
+</div>
+        
+        <div class="cities-grid">
+            <a href="/predict_bangalore" class="city-card">
+                <img src="https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80" alt="Bangalore">
+                <div class="city-name">Bangalore</div>
+            </a>
+
+    <!-- Delhi (Coming Soon) -->
+    <div class="city-card coming-soon" title="We're working on adding this city soon! Stay tuned!">
+        <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Delhi">
+        <div class="city-name">Delhi</div>
+        <div class="coming-soon-text">Coming Soon!</div>
+    </div>
+
+    <!-- Mumbai (Coming Soon) -->
+    <div class="city-card coming-soon" title="We're working on adding this city soon! Stay tuned!">
+        <img src="https://images.unsplash.com/photo-1595642527925-4d41cb781653?ixlib=rb-1.2.1&auto=format&fit=crop&w=1947&q=80" alt="Mumbai">
+        <div class="city-name">Mumbai</div>
+        <div class="coming-soon-text">Coming Soon!</div>
+    </div>
+
+    <!-- Kolkata (Coming Soon) -->
+    <div class="city-card coming-soon"title="We're working on adding this city soon! Stay tuned!">
+        <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Kolkata">
+        <div class="city-name">Kolkata</div>
+        <div class="coming-soon-text">Coming Soon!</div>
+    </div>
+</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

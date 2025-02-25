@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghar Dekho</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 600px;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #34495e;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #ecf0f1;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.4rem;
+            color: #2c3e50;
+            display: none;
+        }
+
+        .featured-text {
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .featured-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="featured-text">
+        <h2>Smart Property Valuation for Banglore</h2>
+        <p>Get Instant Price Estimates for Your Dream Home</p>
+    </div>
+
+    <div class="container">
+        <h1>Home Price Prediction</h1>
+        
+        <form id="predictionForm">
+            <div class="form-group">
+                <label for="area_type">Property Type</label>
+                <select id="area_type" name="area_type" required>
+                    <option value="Super built-up Area">Super built-up Area</option>
+                    <option value="Built-up Area">Built-up Area</option>
+                    <option value="Plot Area">Plot Area</option>
+                    <option value="Carpet Area">Carpet Area</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select id="location" name="location" required>
+                    <option value="7th Phase JP Nagar">7th Phase JP Nagar</option>
+                    <option value="8th Phase JP Nagar">8th Phase JP Nagar</option>
+                    <option value="Akshaya Nagar">Akshaya Nagar</option>
+                    <option value="Banashankari">Banashankari</option>
+                    <option value="Bannerghatta Road">Bannerghatta Road</option>
+                    <option value="Begur Road">Begur Road</option>
+                    <option value="Bellandur">Bellandur</option>
+                    <option value="Bisuvanahalli">Bisuvanahalli</option>
+                    <option value="Budigere">Budigere</option>
+                    <option value="Chandapura">Chandapura</option>
+                    <option value="Electronic City">Electronic City</option>
+                    <option value="Electronic City Phase II">Electronic City Phase II</option>
+                    <option value="Electronics City Phase 1">Electronics City Phase 1</option>
+                    <option value="HSR Layout">HSR Layout</option>
+                    <option value="Haralur Road">Haralur Road</option>
+                    <option value="Harlur">Harlur</option>
+                    <option value="Hebbal">Hebbal</option>
+                    <option value="Hennur">Hennur</option>
+                    <option value="Hennur Road">Hennur Road</option>
+                    <option value="Hoodi">Hoodi</option>
+                    <option value="Hormavu">Hormavu</option>
+                    <option value="Hosa Road">Hosa Road</option>
+                    <option value="Hulimavu">Hulimavu</option>
+                    <option value="JP Nagar">JP Nagar</option>
+                    <option value="Jakkur">Jakkur</option>
+                    <option value="Jalahalli">Jalahalli</option>
+                    <option value="Jigani">Jigani</option>
+                    <option value="KR Puram">KR Puram</option>
+                    <option value="Kaggadasapura">Kaggadasapura</option>
+                    <option value="Kanakpura Road">Kanakpura Road</option>
+                    <option value="Kasavanhalli">Kasavanhalli</option>
+                    <option value="Kengeri">Kengeri</option>
+                    <option value="Koramangala">Koramangala</option>
+                    <option value="Kothanur">Kothanur</option>
+                    <option value="Malleshwaram">Malleshwaram</option>
+                    <option value="Marathahalli">Marathahalli</option>
+                    <option value="Nagarbhavi">Nagarbhavi</option>
+                    <option value="Old Madras Road">Old Madras Road</option>
+                    <option value="Panathur">Panathur</option>
+                    <option value="Rachenahalli">Rachenahalli</option>
+                    <option value="Raja Rajeshwari Nagar">Raja Rajeshwari Nagar</option>
+                    <option value="Rajaji Nagar">Rajaji Nagar</option>
+                    <option value="Ramamurthy Nagar">Ramamurthy Nagar</option>
+                    <option value="Sarjapur">Sarjapur</option>
+                    <option value="Sarjapur Road">Sarjapur Road</option>
+                    <option value="TC Palaya">TC Palaya</option>
+                    <option value="Thanisandra">Thanisandra</option>
+                    <option value="Thigalarapalya">Thigalarapalya</option>
+                    <option value="Uttarahalli">Uttarahalli</option>
+                    <option value="Varthur">Varthur</option>
+                    <option value="Whitefield">Whitefield</option>
+                    <option value="Yelahanka">Yelahanka</option>
+                    <option value="Yeshwanthpur">Yeshwanthpur</option>
+                    <option value="other">Other Locations</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="total_sqft">Total Square Feet</label>
+                <input type="number" id="total_sqft" name="total_sqft" required 
+                       min="100" 
+                       placeholder="Enter total area in sqft (Minimum 100)">
+            </div>
+
+            <div class="form-group">
+                <label for="BHK">BHK</label>
+                <input type="number" id="BHK" name="BHK" required 
+                       min="1" 
+                       placeholder="Number of bedrooms (Minimum 1)">
+            </div>
+
+            <div class="form-group">
+                <label for="bath">Bathrooms</label>
+                <input type="number" id="bath" name="bath" required 
+                       min="1" 
+                       placeholder="Number of bathrooms (Minimum 1)">
+            </div>
+
+            <div class="form-group">
+                <label for="balcony">Balconies</label>
+                <input type="number" id="balcony" name="balcony" 
+                       value="1" 
+                       min="0" 
+                       placeholder="Number of balconies (0 or more)">
+            </div>
+
+            <div class="form-group">
+                <label for="availability">Availability</label>
+                <select id="availability" name="availability" required>
+                    <option value="Ready To Move">Ready To Move</option>
+                    <option value="Immediate Possession">Immediate Possession</option>
+                    <option value="Within 2 Months">Within 2 Months</option>
+                </select>
+            </div>
+
+            
+            <div class="form-group">
+                <label for="price_cat">Price Category</label>
+                <select id="price_cat" name="price_cat" required>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="low">Low</option>
+                    <option value="very high">Very high</option>
+                </select>
+            </div>
+
+
+            <button type="submit">Estimate Price</button>
+        </form>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <footer>
+        <p>  2025 #K9 Industries | Accurate Property Valuations Powered by AI</p>
+    </footer>
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerText = 'Analyzing property details...';
+    
+            // Corrected fetch URL to '/predict_bangalore'
+            fetch('/predict_bangalore', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('result').innerHTML = `
+                        <strong>Estimated Value:</strong><br>
+                        <span style="color: #27ae60; font-size: 1.6rem;">${data.prediction}</span>
+                    `;
+                } else {
+                    document.getElementById('result').innerHTML = `
+                        <span style="color: #e74c3c;">Error: ${data.message}</span>
+                    `;
+                }
+            })
+            .catch(error => {
+                document.getElementById('result').innerHTML = `
+                    <span style="color: #e74c3c;">Error: ${error.message}</span>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>
